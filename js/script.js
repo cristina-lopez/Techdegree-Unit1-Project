@@ -9,7 +9,7 @@ project 1 - A Random Quote Generator
  * quote, source, citation, and year.
 ***/
 
-var quotes = [
+let quotes = [
   {
     quote: 'If you always do what interests you, at least one person is pleased.',
     source: 'Katharine Hepburn',
@@ -77,9 +77,6 @@ function getRandomQuote() {
   return randomQuote;
 }
 
-// Testing code.
-console.log(getRandomQuote());
-
 /***
  * `printQuote` function
  * This function creates the HTML string that is printed to the webpage.
@@ -90,35 +87,26 @@ console.log(getRandomQuote());
 function printQuote() {
   var quoteChosen = getRandomQuote();
   var HTMLstring = `
-    <p class = "quote"> ${quoteChosen.quote}</p> 
-    <p class = "source"> ${quoteChosen.source}`;
+    <p class="quote"> ${quoteChosen.quote}</p> 
+    <p class="source"> ${quoteChosen.source}`;
 
     if (quoteChosen.citation) {
-      HTMLstring += `<span class = "citation"> ${quoteChosen.citation}</span>`;
+      HTMLstring += `<span class="citation"> ${quoteChosen.citation}</span>`;
     }
 
     if (quoteChosen.year) {
-      HTMLstring += `<span class = "year"> ${quoteChosen.year}</span>`;
+      HTMLstring += `<span class="year"> ${quoteChosen.year}</span>`;
     }
 
     if (quoteChosen.tags) {
-      HTMLstring += `<span class = "tags"> ${quoteChosen.tags}</span>`;
+      HTMLstring += `<span class="tags"> ${quoteChosen.tags}</span>`;
     }
 
     HTMLstring += `</p>`;
 
     randomColor();
     document.getElementById('quote-box').innerHTML = HTMLstring; 
-
-    // Testing code.
-    console.log(quoteChosen);
-    console.log(quoteChosen.quote);
-    console.log(quoteChosen.year);
-    console.log(HTMLstring);
 }
-
-// Testing code.
-printQuote();
 
 /***
  * `randomColor` function. From w3resource.
@@ -130,19 +118,14 @@ function randomColor() {
   var x = Math.floor(Math.random() * 256);
   var y = Math.floor(Math.random() * 256);
   var z = Math.floor(Math.random() * 256);
-  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  let bgColor = `rgb(${x}, ${y}, ${z})`;
   document.body.style.background = bgColor;
 }
 
 /***
- * `timing` function. 
- * This function runs the printQuote function automatically after 10 seconds.
+ * This command runs the printQuote function automatically after 10 seconds.
 ***/
-function timing() {
-  setInterval(printQuote, (1000*10));
-}
-
-timing();
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
